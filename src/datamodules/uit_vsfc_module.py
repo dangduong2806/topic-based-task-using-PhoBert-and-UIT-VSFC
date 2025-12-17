@@ -1,4 +1,5 @@
-import pytorch_lightning as pl, LightningDataModule
+import pytorch_lightning as pl
+from pytorch_lightning import LightningDataModule
 from torch.utils.data import DataLoader, Dataset
 from transformers import AutoTokenizer
 import pandas as pd
