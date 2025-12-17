@@ -53,19 +53,27 @@ def train(cfg: DictConfig):
     # Thanh tiến trình đẹp mắt
     progress_bar = RichProgressBar()
 
-    # 5. Định nghĩa Logger (Lưu metric vào file csv hoặc WandB)
-    # Mặc định dùng CSVLogger để bạn dễ chạy demo. 
-    # Nếu muốn dùng WandB, bỏ comment dòng dưới và điền project name.
-    logger = CSVLogger(save_dir="logs", name="phobert_logs")
-    # logger = WandbLogger(project="phobert_uit_vsfc", name=cfg.run_name)
+    # --- SỬA ĐỔI CHÍNH Ở ĐÂY: WANDB LOGGER ---
+    print(f"Initializing WandB Logger for project: {cfg.logger.wandb.project}")
+    wandb_logger = WandbLogger(
+        project=cfg.logger.wandb.project,
+        name=cfg.run_name,
+        log_model=cfg.logger.wandb.log_model, # "all" hoặc True để lưu checkpoints lên cloud
+        save_dir=cfg.paths.log_dir # Lưu các file meta cục bộ vào thư mục logs
+    )
 
+    # (Tùy chọn) Theo dõi Gradients và Histogram của weights
+    # Giúp bạn biết model có bị kẹt gradient hay không
+    wandb_logger.watch(model, log="all", log_freq=100)
+    # ------------------------------------------
+    
     # 6. Khởi tạo Trainer
     trainer = pl.Trainer(
         max_epochs=cfg.trainer.max_epochs,
         accelerator=cfg.trainer.accelerator,
         devices=cfg.trainer.devices,
         callbacks=[checkpoint_callback, early_stop_callback, progress_bar],
-        logger=logger,
+        logger=wandb_logger,
         # Dùng precision 16 (mixed precision) giúp train nhanh hơn và nhẹ hơn trên GPU
         precision="16-mixed" if cfg.trainer.accelerator == "gpu" else 32,
         log_every_n_steps=10
