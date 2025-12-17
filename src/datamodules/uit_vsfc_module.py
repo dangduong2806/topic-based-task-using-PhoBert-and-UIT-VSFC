@@ -29,7 +29,7 @@ class UITVSFCDataset(Dataset):
 
         encoding = self.tokenizer.encode_plus(
             text,
-            add_specila_tokens=True,
+            add_special_tokens=True,
             max_length=self.max_len,
             padding='max_length',
             truncation=True,
