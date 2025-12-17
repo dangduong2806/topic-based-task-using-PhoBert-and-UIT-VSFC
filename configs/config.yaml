@@ -19,3 +19,8 @@ trainer:
   max_epochs: 10
   accelerator: "gpu"
   devices: 1
+
+logger:
+  wandb:
+    project: "phobert-uit-vsfc" # Tên project trên web
+    log_model: True # Tự động upload checkpoint lần cloud
