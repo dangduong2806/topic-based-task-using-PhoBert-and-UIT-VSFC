@@ -1,7 +1,7 @@
 import hydra
 from omegaconf import DictConfig
 import pytorch_lightning as pl
-from pytorch_lightning.callbacks import ModelCheckpoint, EarlyStopping, RichProgressBar
+from pytorch_lightning.callbacks import ModelCheckpoint, EarlyStopping, RichProgressBar, TQDMProgressBar
 from pytorch_lightning.loggers import CSVLogger, WandbLogger
 
 # Import module của chúng ta
@@ -51,7 +51,8 @@ def train(cfg: DictConfig):
     )
 
     # Thanh tiến trình đẹp mắt
-    progress_bar = RichProgressBar()
+    # progress_bar = RichProgressBar()
+    progress_bar = TQDMProgressBar(refresh_rate=20)
 
     # --- SỬA ĐỔI CHÍNH Ở ĐÂY: WANDB LOGGER ---
     print(f"Initializing WandB Logger for project: {cfg.logger.wandb.project}")
@@ -76,7 +77,7 @@ def train(cfg: DictConfig):
         logger=wandb_logger,
         # Dùng precision 16 (mixed precision) giúp train nhanh hơn và nhẹ hơn trên GPU
         precision="16-mixed" if cfg.trainer.accelerator == "gpu" else 32,
-        log_every_n_steps=10
+        log_every_n_steps=20
     )
 
     # 7. Bắt đầu Training
