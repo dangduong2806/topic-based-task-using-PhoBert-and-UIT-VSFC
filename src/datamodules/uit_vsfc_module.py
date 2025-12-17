@@ -17,7 +17,7 @@ class UITVSFCDataset(Dataset):
 
         if not os.path.exists(data_path):
             raise FileNotFoundError(f"Không tìm thấy file dữ liệu tại: {data_path}")
-        self.data_path = pd.read_csv(data_path)
+        self.data = pd.read_csv(data_path)
 
 
     def __len__(self):
