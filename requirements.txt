@@ -1,0 +1,6 @@
+hydra-core
+pytorch-lightning
+transformers
+torchmetrics
+pandas
+rich

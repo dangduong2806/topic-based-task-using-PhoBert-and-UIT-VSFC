@@ -1,0 +1,21 @@
+defaults:
+  - _self_
+
+project_name: "phobert-uit-vsfc"
+seed: 42
+
+data: 
+  data_dir: "./data/processed" # thư mục chứa train.csv, dev.csv, test.csv
+  batch_size: 32
+  max_len: 128
+  num_workers: 4
+
+model:
+  model_name: "vinai/phobert-base"
+  num_labels: 4
+  learning_rate: 2e-5
+
+trainer:
+  max_epochs: 10
+  accelerator: "gpu"
+  devices: 1
