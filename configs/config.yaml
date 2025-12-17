@@ -4,6 +4,10 @@ defaults:
 project_name: "phobert-uit-vsfc"
 seed: 42
 
+paths:
+  ckpt_dir: "checkpoints/"
+  log_dir: "logs/"
+
 data: 
   data_dir: "./data/processed" # thư mục chứa train.csv, dev.csv, test.csv
   batch_size: 32
