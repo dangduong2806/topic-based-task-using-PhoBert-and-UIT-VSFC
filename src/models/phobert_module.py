@@ -37,6 +37,7 @@ class PhoBERTClassifier(pl.LightningModule):
         # 1. Metric tổng hợp (Weighted Average) - Để theo dõi quá trình train
         metrics = MetricCollection({
             'acc': MulticlassPrecision(num_classes=num_labels, average='weighted'), # Tạm dùng Precision weighted làm acc đại diện
+            'recall': MulticlassRecall(num_classes=num_labels, average='weighted'),
             'f1': MulticlassF1Score(num_classes=num_labels, average='weighted')
         })
         self.train_metrics = metrics.clone(prefix='train_')
@@ -150,12 +151,14 @@ class PhoBERTClassifier(pl.LightningModule):
                     round(f1s[i] * 100, 2)
                 ])
             
-            # Dòng Average (Weighted Average từ metric tổng)
+            # --- FIX LỖI Ở ĐÂY: Thay vì để "-", ta lấy giá trị thực từ metric tổng ---
+            avg_prec = output_metrics['val_precision'].item() * 100
+            avg_rec = output_metrics['val_recall'].item() * 100
             avg_f1 = output_metrics['val_f1'].item() * 100
-            # Lưu ý: Để đơn giản mình lấy F1 weighted làm đại diện, 
-            # nếu muốn chuẩn xác bảng bạn có thể tính Average riêng cho Precision/Recall
-            data.append(["Average (Weighted)", "-", "-", round(avg_f1, 2)])
-
+            
+            # Bây giờ toàn bộ cột đều là số (Number), WandB sẽ không báo lỗi nữa
+            data.append(["Average", round(avg_prec, 2), round(avg_rec, 2), round(avg_f1, 2)])
+            
             # Đẩy lên WandB
             self.logger.experiment.log({
                 f"classification_report_epoch_{self.current_epoch}": wandb.Table(data=data, columns=columns)
