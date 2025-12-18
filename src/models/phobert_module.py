@@ -151,10 +151,18 @@ class PhoBERTClassifier(pl.LightningModule):
                     round(f1s[i] * 100, 2)
                 ])
             
-            # --- FIX LỖI Ở ĐÂY: Thay vì để "-", ta lấy giá trị thực từ metric tổng ---
-            avg_prec = output_metrics['val_precision'].item() * 100
-            avg_rec = output_metrics['val_recall'].item() * 100
-            avg_f1 = output_metrics['val_f1'].item() * 100
+            # --- FIX LỖI KEY ERROR Ở ĐÂY ---
+            # Dùng .get() để lấy giá trị dù key có prefix 'val_' hay không
+            # Ưu tiên lấy 'val_precision', nếu không có thì lấy 'precision'
+            
+            p_val = output_metrics.get('val_precision', output_metrics.get('precision'))
+            r_val = output_metrics.get('val_recall', output_metrics.get('recall'))
+            f1_val = output_metrics.get('val_f1', output_metrics.get('f1'))
+
+            # Chuyển sang float và nhân 100 (xử lý trường hợp tensor 0-dim)
+            avg_prec = p_val.item() * 100 if p_val is not None else 0.0
+            avg_rec = r_val.item() * 100 if r_val is not None else 0.0
+            avg_f1 = f1_val.item() * 100 if f1_val is not None else 0.0
             
             # Bây giờ toàn bộ cột đều là số (Number), WandB sẽ không báo lỗi nữa
             data.append(["Average", round(avg_prec, 2), round(avg_rec, 2), round(avg_f1, 2)])
