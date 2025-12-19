@@ -44,8 +44,8 @@ def train_model(cfg: DictConfig):
         dirpath=cfg.paths.ckpt_dir,
         filename="phobert-{epoch:02d}-{val_f1:.4f}",
         save_top_k=1,
-        monitor="val_f1",
-        mode="max"
+        monitor="val_loss",
+        mode="min"
     )
 
     early_stop_callback = EarlyStopping(
