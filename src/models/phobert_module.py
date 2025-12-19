@@ -10,7 +10,7 @@ from torchmetrics.classification import MulticlassPrecision, MulticlassRecall, M
 import wandb
 import pandas as pd
 import pytorch_lightning
-
+import torch.nn.functional as F
 
 class PhoBERTClassifier(pl.LightningModule):
     """
@@ -22,6 +22,8 @@ class PhoBERTClassifier(pl.LightningModule):
         # Lưu hyperparameters (model_name, learning_rate,...) vào checkpoint
         self.save_hyperparameters()
 
+        # class weights
+        self.class_weights = torch.tensor([1.0, 2.0, 2.0, 4.0], dtype=torch.float)
         # 1. Load Model Config & Architecture
         self.config = AutoConfig.from_pretrained(
             model_name, 
@@ -73,7 +75,12 @@ class PhoBERTClassifier(pl.LightningModule):
             labels=batch['labels']
         )
         
-        loss = outputs.loss
+        # Chuyển class_weights sang cùng device với model (GPU)
+        if self.class_weights.device != self.device:
+             self.class_weights = self.class_weights.to(self.device)
+
+        loss = F.cross_entropy(outputs.logits, batch['labels'], weight=self.class_weights)
+        
         preds = torch.argmax(outputs.logits, dim=1)
         
         # Log metrics cơ bản
@@ -90,7 +97,11 @@ class PhoBERTClassifier(pl.LightningModule):
             attention_mask=batch['attention_mask'], 
             labels=batch['labels']
         )
-        loss = outputs.loss
+
+        if self.class_weights.device != self.device:
+             self.class_weights = self.class_weights.to(self.device) 
+        loss = F.cross_entropy(outputs.logits, batch['labels'], weight=self.class_weights)
+
         preds = torch.argmax(outputs.logits, dim=1)
         labels = batch['labels']
 
