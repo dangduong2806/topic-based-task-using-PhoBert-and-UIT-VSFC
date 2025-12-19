@@ -1,0 +1,232 @@
+[
+  {
+    "text": "Bữa nào cũng over time nên nhiều lúc em không theo kịp tiến độ bài tập trên Moodle.",
+    "label": 3,
+    "sentiment": 0
+  },
+  {
+    "text": "Kỳ thi cuối kỳ vừa rồi điểm trải dài từ 1 - 5 điểm làm nhiều bạn khá hoang mang.",
+    "label": 3,
+    "sentiment": 1
+  },
+  {
+    "text": "Em thấy cần khảo sát trước ý kiến sinh viên để tránh đánh nhầm lịch trên Web đăng ký môn học.",
+    "label": 3,
+    "sentiment": 1
+  },
+  {
+    "text": "Lớp học quá đông nên có bạn trả lời được còn bạn kia thì rớt, cảm giác hơi tệ.",
+    "label": 3,
+    "sentiment": 0
+  },
+  {
+    "text": "Tự mày mò tìm kiếm tài liệu trên mạng nên cũng dễ dàng vận dụng kiến thức trên lớp vào bài tập.",
+    "label": 3,
+    "sentiment": 2
+  },
+  {
+    "text": "Không thể trông đợi lời giải đáp ngay nên em phải tự học thêm qua Moodle.",
+    "label": 3,
+    "sentiment": 1
+  },
+  {
+    "text": "Ban đầu chưa quen giọng nên em thấy hơi khó hiểu, nhưng về sau đỡ hơn.",
+    "label": 3,
+    "sentiment": 1
+  },
+  {
+    "text": "Lớp học hơi buồn chán, sinh viên thuyết trình mà nhiều bạn đứng trình bày chưa hiểu bài.",
+    "label": 3,
+    "sentiment": 0
+  },
+  {
+    "text": "Có vẻ nội dung chưa thực tế nên em khó hình dung để áp dụng.",
+    "label": 3,
+    "sentiment": 0
+  },
+  {
+    "text": "Nhờ đi sâu vào ứng dụng thực tế nên em dễ nắm bắt kiến thức để đi thi.",
+    "label": 3,
+    "sentiment": 2
+  },
+  {
+    "text": "Wifi Eduroam hôm bữa lag quá làm em nộp bài trên Moodle không kịp.",
+    "label": 3,
+    "sentiment": 0
+  },
+  {
+    "text": "Hệ thống sập đúng lúc combat đăng ký môn nên sv rất bức xúc.",
+    "label": 3,
+    "sentiment": 0
+  },
+  {
+    "text": "Web đăng ký môn học xử lý nhanh hơn trước nên đỡ cảnh full slot.",
+    "label": 3,
+    "sentiment": 2
+  },
+  {
+    "text": "Cho em hỏi P.ĐT bao giờ cập nhật thông báo về lịch thi trên web môn học ạ?",
+    "label": 3,
+    "sentiment": 1
+  },
+  {
+    "text": "Em lên P.CTSV làm giấy xác nhận nhưng phải chờ hơi lâu.",
+    "label": 3,
+    "sentiment": 1
+  },
+  {
+    "text": "Thẻ sinh viên của em bị lỗi nên không quẹt được ở nhà xe.",
+    "label": 3,
+    "sentiment": 0
+  },
+  {
+    "text": "Bãi xe trưa nắng khá nóng, gửi xe xong là mệt luôn.",
+    "label": 3,
+    "sentiment": 0
+  },
+  {
+    "text": "Bác bảo vệ ở nhà xe vui tính nên sv cũng thoải mái hơn.",
+    "label": 3,
+    "sentiment": 2
+  },
+  {
+    "text": "Canteen đông quá giờ cao điểm nên khó mua đồ ăn.",
+    "label": 3,
+    "sentiment": 0
+  },
+  {
+    "text": "Máy lạnh thư viện mát, ngồi tự học nên tập trung hơn.",
+    "label": 3,
+    "sentiment": 2
+  },
+  {
+    "text": "Thang máy giờ cao điểm phải đợi hơi lâu.",
+    "label": 3,
+    "sentiment": 1
+  },
+  {
+    "text": "Điện thoại không liên lạc được khi cần hỏi gấp về học phí.",
+    "label": 3,
+    "sentiment": 0
+  },
+  {
+    "text": "Em thấy chất lượng môn học vừa đủ cho mọi sinh viên nếu chịu khó tự học.",
+    "label": 3,
+    "sentiment": 1
+  },
+  {
+    "text": "Sau môn này em nắm chắc kiến thức hơn và tự tin về kỹ năng cá nhân.",
+    "label": 3,
+    "sentiment": 2
+  },
+  {
+    "text": "Toàn phải đi học ké lớp khác nên khá bất tiện.",
+    "label": 3,
+    "sentiment": 0
+  },
+  {
+    "text": "Không gặp mặt trực tiếp nên nhiều khi khó trao đổi.",
+    "label": 3,
+    "sentiment": 1
+  },
+  {
+    "text": "Phải bỏ tiền học lại vì rớt môn nên cảm giác không thể hài lòng.",
+    "label": 3,
+    "sentiment": 0
+  },
+  {
+    "text": "Học trên hệ thống DAA mà đôi lúc bị lag.",
+    "label": 3,
+    "sentiment": 0
+  },
+  {
+    "text": "IDA Pro 64-bit không phân tích được file thực thi 32-bit nên em hơi rối.",
+    "label": 3,
+    "sentiment": 1
+  },
+  {
+    "text": "Thanh ghi trong bài phân tích khá phức tạp nên cần thêm thời gian.",
+    "label": 3,
+    "sentiment": 1
+  },
+  {
+    "text": "Bài lab toàn dùng Win Server 2003 nên em thấy có vẻ cũ.",
+    "label": 3,
+    "sentiment": 0
+  },
+  {
+    "text": "Tất cả phải sử dụng trên phần mềm mô phỏng Proteus nên ban đầu hơi khó vận dụng.",
+    "label": 3,
+    "sentiment": 1
+  },
+  {
+    "text": "Giờ học thiếu sinh động nên dễ gây nhàm chán.",
+    "label": 3,
+    "sentiment": 0
+  },
+  {
+    "text": "Rất may mắn khi được học và em thấy trải nghiệm nhìn chung là hoàn hảo.",
+    "label": 3,
+    "sentiment": 2
+  },
+  {
+    "text": "Có hôm hệ thống Moodle báo lỗi cài như YouTube kết nối với laptop.",
+    "label": 3,
+    "sentiment": 1
+  },
+  {
+    "text": "Sv hiểu bài thì làm được ngay còn k hiểu là rớt môn.",
+    "label": 3,
+    "sentiment": 0
+  },
+  {
+    "text": "Em mong phòng thanh tra - pháp chế - ĐBCL có biện pháp xử lý phản ánh.",
+    "label": 3,
+    "sentiment": 1
+  },
+  {
+    "text": "Không trình bày lại cho các bạn hiểu nên nhiều sv còn mơ hồ.",
+    "label": 3,
+    "sentiment": 0
+  },
+  {
+    "text": "Điểm số nếu cho được điểm 11 thì chắc sv vui lắm.",
+    "label": 3,
+    "sentiment": 2
+  },
+  {
+    "text": "Bình thường với giảng viên nhưng sv vẫn cần nhiều tài liệu hơn.",
+    "label": 3,
+    "sentiment": 1
+  },
+  {
+    "text": "Kể chuyện vui nên lớp đỡ buồn ngủ.",
+    "label": 3,
+    "sentiment": 2
+  },
+  {
+    "text": "Tiếng động cơ xây dựng ồn quá nên em khó tập trung.",
+    "label": 3,
+    "sentiment": 0
+  },
+  {
+    "text": "Em chưa hình dung rõ cách áp dụng nên vẫn thấy khó hiểu.",
+    "label": 3,
+    "sentiment": 1
+  },
+  {
+    "text": "Dễ hiểu bài nhưng không theo kịp tốc độ nên em phải xem lại slide.",
+    "label": 3,
+    "sentiment": 1
+  },
+  {
+    "text": "Thái độ nv hành chính hôm đó hơi gắt nên sv khá ngại hỏi.",
+    "label": 3,
+    "sentiment": 0
+  },
+  {
+    "text": "Wifi mạnh hơn trước nên tải tài liệu rất hữu ích.",
+    "label": 3,
+    "sentiment": 2
+  }
+]
