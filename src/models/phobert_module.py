@@ -147,7 +147,18 @@ class PhoBERTClassifier(pl.LightningModule):
             lr=self.hparams.learning_rate,
             weight_decay=self.hparams.weight_decay
             )
-        return optimizer
+        # Thêm Scheduler: Giảm LR tuyến tính về 0
+        scheduler = torch.optim.lr_scheduler.LinearLR(
+            optimizer, start_factor=1.0, end_factor=0.0, total_iters=self.trainer.estimated_stepping_batches
+        )
+        return {
+                "optimizer": optimizer,
+                "lr_scheduler": {
+                    "scheduler": scheduler,
+                    "interval": "step",
+                    "frequency": 1
+                    }
+                }
     
     def on_validation_epoch_end(self):
         # 1. Log metrics tổng
