@@ -35,6 +35,8 @@ def train_model(cfg: DictConfig):
         model_name=cfg.model.model_name,
         num_labels=cfg.model.num_labels,
         learning_rate=cfg.model.learning_rate,
+        weight_decay=cfg.model.weight_decay, # Mới
+        dropout=cfg.model.dropout,           # Mới
         class_names=list(cfg.model.class_names) # Chuyển OmegaConf list thành python list
     )
 
