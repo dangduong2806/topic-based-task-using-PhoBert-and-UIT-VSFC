@@ -4,3 +4,4 @@ transformers
 torchmetrics
 pandas
 rich
+keybert
