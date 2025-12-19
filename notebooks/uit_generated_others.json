@@ -1,0 +1,232 @@
+[
+  {
+    "text": "Web đăng ký môn học năm nay lag quá, cứ tới giờ combat là hệ thống sập.",
+    "label": 3,
+    "sentiment": 0
+  },
+  {
+    "text": "Moodle dùng để nộp bài cũng ổn, dù đôi lúc load hơi chậm.",
+    "label": 3,
+    "sentiment": 1
+  },
+  {
+    "text": "DAA nhiều kiến thức hay, nhưng em thấy tự học hơi nhiều.",
+    "label": 3,
+    "sentiment": 1
+  },
+  {
+    "text": "Wifi ở khu tự học bắt được Eduroam khá mạnh, học nhóm rất tiện.",
+    "label": 3,
+    "sentiment": 2
+  },
+  {
+    "text": "Hệ thống hay bị lag vào giờ cao điểm, mong khắc phục sớm.",
+    "label": 3,
+    "sentiment": 1
+  },
+  {
+    "text": "Bãi xe nắng quá, gửi xe buổi trưa hơi mệt.",
+    "label": 3,
+    "sentiment": 0
+  },
+  {
+    "text": "Nhà xe rộng rãi, gửi xe nhanh nên tiết kiệm thời gian.",
+    "label": 3,
+    "sentiment": 2
+  },
+  {
+    "text": "Canteen đồ ăn tạm ổn, nhưng giờ cao điểm hơi đông.",
+    "label": 3,
+    "sentiment": 1
+  },
+  {
+    "text": "Thang máy hay phải chờ lâu vào giờ tan học.",
+    "label": 3,
+    "sentiment": 0
+  },
+  {
+    "text": "Máy lạnh thư viện mát, ngồi học lâu không bị mệt.",
+    "label": 3,
+    "sentiment": 2
+  },
+  {
+    "text": "P.ĐT xử lý hồ sơ khá nhanh, em không phải chờ lâu.",
+    "label": 3,
+    "sentiment": 2
+  },
+  {
+    "text": "Em có thắc mắc về học phí nhưng chưa rõ nên hỏi P.ĐT hay P.CTSV.",
+    "label": 3,
+    "sentiment": 1
+  },
+  {
+    "text": "P.CTSV lúc đông sv thì trả lời hơi gắt.",
+    "label": 3,
+    "sentiment": 0
+  },
+  {
+    "text": "Làm giấy xác nhận sinh viên ở P.CTSV cũng khá thuận tiện.",
+    "label": 3,
+    "sentiment": 2
+  },
+  {
+    "text": "Thẻ sinh viên của em bị lỗi từ, quét cửa hơi khó.",
+    "label": 3,
+    "sentiment": 0
+  },
+  {
+    "text": "Cho em hỏi bao giờ nhận lại thẻ sinh viên mới vậy ạ?",
+    "label": 3,
+    "sentiment": 1
+  },
+  {
+    "text": "Đợt đăng ký môn này full slot nhanh quá, sv năm dưới khó đăng ký.",
+    "label": 3,
+    "sentiment": 0
+  },
+  {
+    "text": "Web daa dạo này đỡ lag hơn trước.",
+    "label": 3,
+    "sentiment": 2
+  },
+  {
+    "text": "Moodle mà sập lúc nộp bài là hơi choáng.",
+    "label": 3,
+    "sentiment": 0
+  },
+  {
+    "text": "Wifi đôi khi chập chờn nhưng nhìn chung vẫn dùng được.",
+    "label": 3,
+    "sentiment": 1
+  },
+  {
+    "text": "Eduroam kết nối hơi rắc rối cho sv mới.",
+    "label": 3,
+    "sentiment": 1
+  },
+  {
+    "text": "Bác bảo vệ ở bãi xe vui tính, chỉ dẫn nhiệt tình.",
+    "label": 3,
+    "sentiment": 2
+  },
+  {
+    "text": "Canteen mở hơi trễ buổi sáng nên khó ăn sáng trước giờ học.",
+    "label": 3,
+    "sentiment": 0
+  },
+  {
+    "text": "Thang máy hoạt động bình thường, chỉ đông vào giờ cao điểm.",
+    "label": 3,
+    "sentiment": 1
+  },
+  {
+    "text": "Máy lạnh thư viện đôi lúc lạnh quá, mong điều chỉnh.",
+    "label": 3,
+    "sentiment": 1
+  },
+  {
+    "text": "P.ĐT thông báo lịch khá rõ ràng trên web.",
+    "label": 3,
+    "sentiment": 2
+  },
+  {
+    "text": "Học phí năm nay đóng online tiện hơn.",
+    "label": 3,
+    "sentiment": 2
+  },
+  {
+    "text": "Việc xác nhận giấy tờ đôi khi phải đi lại nhiều lần.",
+    "label": 3,
+    "sentiment": 0
+  },
+  {
+    "text": "Web đăng ký môn học mà thêm thông báo realtime thì tốt hơn.",
+    "label": 3,
+    "sentiment": 1
+  },
+  {
+    "text": "Hệ thống bị lag làm sv hơi bối rối khi làm bài online.",
+    "label": 3,
+    "sentiment": 0
+  },
+  {
+    "text": "DAA học xong thấy hiểu thêm nhiều thứ áp dụng được.",
+    "label": 3,
+    "sentiment": 2
+  },
+  {
+    "text": "Moodle giao diện dễ dùng nhưng cần tối ưu tốc độ.",
+    "label": 3,
+    "sentiment": 1
+  },
+  {
+    "text": "Wifi ở khu nhà xe bắt không ổn lắm.",
+    "label": 3,
+    "sentiment": 0
+  },
+  {
+    "text": "Canteen có nhiều lựa chọn hơn trước.",
+    "label": 3,
+    "sentiment": 2
+  },
+  {
+    "text": "Thẻ sinh viên dùng để mượn sách khá tiện.",
+    "label": 3,
+    "sentiment": 2
+  },
+  {
+    "text": "P.CTSV nên có thêm kênh hỗ trợ online cho sv.",
+    "label": 3,
+    "sentiment": 1
+  },
+  {
+    "text": "Bãi xe giờ cao điểm hơi đông, nhưng vẫn chấp nhận được.",
+    "label": 3,
+    "sentiment": 1
+  },
+  {
+    "text": "Web daa mà sập là coi như sv đứng hình luôn.",
+    "label": 3,
+    "sentiment": 0
+  },
+  {
+    "text": "Eduroam dùng ổn khi học nhóm ban đêm.",
+    "label": 3,
+    "sentiment": 2
+  },
+  {
+    "text": "Máy lạnh thư viện giúp không gian học tập dễ chịu hơn.",
+    "label": 3,
+    "sentiment": 2
+  },
+  {
+    "text": "Việc đăng ký môn cần giảm tình trạng lag để sv đỡ stress.",
+    "label": 3,
+    "sentiment": 1
+  },
+  {
+    "text": "Canteen đông quá nên nhiều khi em phải ra ngoài ăn.",
+    "label": 3,
+    "sentiment": 0
+  },
+  {
+    "text": "P.ĐT trả lời email khá nhanh, em thấy hài lòng.",
+    "label": 3,
+    "sentiment": 2
+  },
+  {
+    "text": "Thang máy kẹt giờ tan học làm sv chờ hơi lâu.",
+    "label": 3,
+    "sentiment": 0
+  },
+  {
+    "text": "Moodle mà có app mượt hơn thì sv dùng sẽ thích hơn.",
+    "label": 3,
+    "sentiment": 1
+  },
+  {
+    "text": "Hệ thống tổng thể của trường dùng khá hữu ích cho việc học.",
+    "label": 3,
+    "sentiment": 2
+  }
+]
