@@ -107,15 +107,26 @@ class PhoBERTClassifier(pl.LightningModule):
         
     def test_step(self, batch, batch_idx):
         """Logic cho kiểm tra cuối cùng (Test Step)"""
-        outputs = self(
-            input_ids=batch['input_ids'], 
-            attention_mask=batch['attention_mask'], 
-            labels=batch['labels']
-        )
-        
+        outputs = self(batch['input_ids'], batch['attention_mask'], batch['labels'])
         preds = torch.argmax(outputs.logits, dim=1)
-        self.test_metrics(preds, batch['labels'])
-        self.log_dict(self.test_metrics, on_step=False, on_epoch=True)
+        labels = batch['labels']
+        
+        # 1. Update metric tổng
+        self.test_metrics.update(preds, labels)
+        
+        # 2. Update metric chi tiết (CẦN THÊM DÒNG NÀY ĐỂ VẼ BẢNG TEST)
+        self.per_class_precision.update(preds, labels)
+        self.per_class_recall.update(preds, labels)
+        self.per_class_f1.update(preds, labels)
+    
+    def on_test_epoch_end(self):
+        # 1. Log metrics tổng
+        output_metrics = self.test_metrics.compute()
+        self.log_dict(output_metrics)
+        self.test_metrics.reset()
+
+        # 2. Log bảng chi tiết (Test Table)
+        self._log_wandb_table(output_metrics, "TEST_Classification_Report")
 
     def configure_optimizers(self):
         """Cấu hình Optimizer"""
@@ -128,53 +139,53 @@ class PhoBERTClassifier(pl.LightningModule):
         return optimizer
     
     def on_validation_epoch_end(self):
-        # 1. Tính toán metric tổng và log
+        # 1. Log metrics tổng
         output_metrics = self.val_metrics.compute()
         self.log_dict(output_metrics)
         self.val_metrics.reset()
 
-        # 2. Tính toán metric chi tiết từng class
+        # 2. Log bảng chi tiết (Validation Table)
+        self._log_wandb_table(output_metrics, "Validation_Classification_Report")
+
+    # --- Helper function để tránh lặp code giữa Val và Test ---
+    def _log_wandb_table(self, output_metrics, table_name):
         precisions = self.per_class_precision.compute().cpu().tolist()
         recalls = self.per_class_recall.compute().cpu().tolist()
         f1s = self.per_class_f1.compute().cpu().tolist()
 
-        # Reset sau khi tính
+        # Reset metric sau khi tính
         self.per_class_precision.reset()
         self.per_class_recall.reset()
         self.per_class_f1.reset()
 
-        # 3. TẠO BẢNG LOG WANDB (Giống hình bạn gửi)
-        if isinstance(self.logger, pytorch_lightning.loggers.WandbLogger):
-            # Tạo data cho bảng
+        if isinstance(self.logger, pl.loggers.WandbLogger):
             columns = ["Class", "Precision", "Recall", "F1-score"]
             data = []
             
-            # Dòng cho từng class
-            for i, class_name in enumerate(self.class_names):
+            safe_len = min(len(self.class_names), len(precisions))
+            for i in range(safe_len):
                 data.append([
-                    class_name, 
+                    self.class_names[i], 
                     round(precisions[i] * 100, 2), 
                     round(recalls[i] * 100, 2), 
                     round(f1s[i] * 100, 2)
                 ])
             
-            # --- FIX LỖI KEY ERROR Ở ĐÂY ---
-            # Dùng .get() để lấy giá trị dù key có prefix 'val_' hay không
-            # Ưu tiên lấy 'val_precision', nếu không có thì lấy 'precision'
+            # Safe Get logic để lấy Average
+            # Lưu ý: Metric của Test sẽ có prefix 'test_', Val sẽ có 'val_'
+            # Nên ta dùng .get() không có prefix trước, nếu không được thì tìm theo prefix
             
-            p_val = output_metrics.get('val_precision', output_metrics.get('precision'))
-            r_val = output_metrics.get('val_recall', output_metrics.get('recall'))
-            f1_val = output_metrics.get('val_f1', output_metrics.get('f1'))
+            # Tìm key chứa chuỗi 'precision', 'recall', 'f1' trong output_metrics
+            p_val = next((v for k, v in output_metrics.items() if 'precision' in k), None)
+            r_val = next((v for k, v in output_metrics.items() if 'recall' in k), None)
+            f1_val = next((v for k, v in output_metrics.items() if 'f1' in k), None)
 
-            # Chuyển sang float và nhân 100 (xử lý trường hợp tensor 0-dim)
             avg_prec = p_val.item() * 100 if p_val is not None else 0.0
             avg_rec = r_val.item() * 100 if r_val is not None else 0.0
             avg_f1 = f1_val.item() * 100 if f1_val is not None else 0.0
             
-            # Bây giờ toàn bộ cột đều là số (Number), WandB sẽ không báo lỗi nữa
             data.append(["Average", round(avg_prec, 2), round(avg_rec, 2), round(avg_f1, 2)])
-            
-            # Đẩy lên WandB
+
             self.logger.experiment.log({
-                f"classification_report_epoch_{self.current_epoch}": wandb.Table(data=data, columns=columns)
+                table_name: wandb.Table(data=data, columns=columns)
             })
