@@ -79,7 +79,12 @@ class PhoBERTClassifier(pl.LightningModule):
         if self.class_weights.device != self.device:
              self.class_weights = self.class_weights.to(self.device)
 
-        loss = F.cross_entropy(outputs.logits, batch['labels'], weight=self.class_weights)
+        loss = F.cross_entropy(
+            outputs.logits, 
+            batch['labels'], 
+            weight=self.class_weights,
+            label_smoothing=0.1
+            )
         
         preds = torch.argmax(outputs.logits, dim=1)
         
