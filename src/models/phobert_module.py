@@ -17,7 +17,7 @@ class PhoBERTClassifier(pl.LightningModule):
     LightningModule cho PhoBERT Sentiment Analysis.
     Bao gồm kiến trúc model, logic training/val/test và optimizer.
     """
-    def __init__(self, model_name, num_labels, learning_rate, class_names: list = None):
+    def __init__(self, model_name, num_labels, learning_rate, class_names: list = None, weight_decay: float = None, dropout: float = None):
         super().__init__()
         # Lưu hyperparameters (model_name, learning_rate,...) vào checkpoint
         self.save_hyperparameters()
@@ -27,6 +27,9 @@ class PhoBERTClassifier(pl.LightningModule):
             model_name, 
             num_labels=num_labels
         )
+        self.config.hidden_dropout_prob = dropout
+        self.config.attention_probs_dropout_prob = dropout
+
         self.model = AutoModelForSequenceClassification.from_pretrained(
             model_name, 
             config=self.config
@@ -117,7 +120,11 @@ class PhoBERTClassifier(pl.LightningModule):
     def configure_optimizers(self):
         """Cấu hình Optimizer"""
         # AdamW là chuẩn mực cho BERT-based models
-        optimizer = AdamW(self.parameters(), lr=self.hparams.learning_rate)
+        optimizer = AdamW(
+            self.parameters(), 
+            lr=self.hparams.learning_rate,
+            weight_decay=self.hparams.weight_decay
+            )
         return optimizer
     
     def on_validation_epoch_end(self):
