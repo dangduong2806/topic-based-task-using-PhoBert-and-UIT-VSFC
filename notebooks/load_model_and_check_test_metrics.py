@@ -95,7 +95,7 @@ if __name__ == "__main__":
         
     print("------------------------------------------\n")
     # Load model
-    checkpoint_path = "checkpoints/model.ckpt"
+    checkpoint_path = "checkpoints/model2.ckpt"
     print(f"Đang load model từ: {checkpoint_path}")
     model = PhoBERTClassifier.load_from_checkpoint(checkpoint_path)
     model.eval()
