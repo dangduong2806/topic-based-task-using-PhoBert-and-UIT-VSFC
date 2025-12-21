@@ -32,9 +32,9 @@ def segment_text_robust(text):
 # 2. Danh sách các file cần xử lý
 # Đảm bảo đường dẫn file của bạn chính xác
 files = [
-    "/content/data/processed/train_augmented_2.csv", 
-    "/content/data/processed/dev.csv", 
-    "/content/data/processed/test.csv"
+    "/content/topic-based-task-using-PhoBert-and-UIT-VSFC/data/processed/train_augmented_2.csv", 
+    "/content/topic-based-task-using-PhoBert-and-UIT-VSFC/data/processed/dev.csv", 
+    "/content/topic-based-task-using-PhoBert-and-UIT-VSFC/data/processed/test.csv"
 ]
 
 for file_path in files:
