@@ -22,7 +22,7 @@ rdrsegmenter = py_vncorenlp.VnCoreNLP(save_dir=abs_path, annotators=["wseg"])
 
 # --- 2. HÀM TÁCH TỪ CHUẨN ---
 # Hàm tách từ (Bỏ try-catch để hiện lỗi nếu có)
-def segment_text_strict(text):
+def segment_text_robust(text):
     if not isinstance(text, str) or not text.strip():
         return ""
     
