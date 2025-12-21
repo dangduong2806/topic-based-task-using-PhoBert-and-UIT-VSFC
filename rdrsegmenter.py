@@ -21,23 +21,17 @@ else:
 rdrsegmenter = py_vncorenlp.VnCoreNLP(save_dir=abs_path, annotators=["wseg"])
 
 # --- 2. HÀM TÁCH TỪ CHUẨN ---
-def segment_text_robust(text):
+# Hàm tách từ (Bỏ try-catch để hiện lỗi nếu có)
+def segment_text_strict(text):
     if not isinstance(text, str) or not text.strip():
         return ""
-    try:
-        # Tách từ
-        sentences = rdrsegmenter.word_segment(text)
-        # Nối lại: Các từ trong câu nối bằng space, các từ ghép có underscore
-        processed_text = " ".join([" ".join(sent) for sent in sentences])
-        
-        # KIỂM TRA NHANH: Nếu output dài gấp đôi input (do thêm quá nhiều dấu cách) -> Có biến
-        if len(processed_text) > len(text) * 1.8 and len(text) > 10:
-            # Fallback: Trả về text gốc nếu nghi ngờ lỗi tách từng ký tự
-            return text 
-            
-        return processed_text
-    except:
-        return text
+    
+    # Gọi trực tiếp để nếu lỗi Java nó sẽ văng ra ngay
+    sentences = rdrsegmenter.word_segment(text)
+    
+    # Nối lại
+    output = " ".join([" ".join(sent) for sent in sentences])
+    return output
     
 # 2. Danh sách các file cần xử lý
 # Đảm bảo đường dẫn file của bạn chính xác
