@@ -25,14 +25,18 @@ rdrsegmenter = py_vncorenlp.VnCoreNLP(save_dir=abs_path, annotators=["wseg"])
 def segment_text_robust(text):
     if not isinstance(text, str) or not text.strip():
         return ""
-    
-    # Gọi trực tiếp để nếu lỗi Java nó sẽ văng ra ngay
-    sentences = rdrsegmenter.word_segment(text)
-    
-    # Nối lại
-    output = " ".join([" ".join(sent) for sent in sentences])
-    return output
-    
+    try:
+        # output của rdrsegmenter.word_segment(text) là một list các câu (strings)
+        # Ví dụ: ['giảng_viên vui_vẻ .', 'câu thứ hai .']
+        sentences = rdrsegmenter.word_segment(text)
+        
+        # CHỈ CẦN NỐI CÁC CÂU LẠI VỚI NHAU
+        # Tuyệt đối không dùng vòng lặp for sent in sentences rồi join(sent) nữa
+        return " ".join(sentences)
+    except Exception as e:
+        print(f"Lỗi: {e}")
+        return text  
+      
 # 2. Danh sách các file cần xử lý
 # Đảm bảo đường dẫn file của bạn chính xác
 files = [
