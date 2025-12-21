@@ -66,7 +66,7 @@ if __name__ == "__main__":
     dm.setup(stage="test")
     test_loader = dm.test_dataloader()
     # Load model
-    checkpoint_path = "checkpoints/best_model.ckpt"
+    checkpoint_path = "checkpoints/model.ckpt"
     print(f"Đang load model từ: {checkpoint_path}")
     model = PhoBERTClassifier.load_from_checkpoint(checkpoint_path)
     model.eval()
