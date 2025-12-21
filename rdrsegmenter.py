@@ -32,9 +32,9 @@ def segment_text_robust(text):
 # 2. Danh sách các file cần xử lý
 # Đảm bảo đường dẫn file của bạn chính xác
 files = [
-    "D:/UIT-VSFC/data/processed/train_augmented_2.csv", 
-    "D:/UIT-VSFC/data/processed/dev.csv", 
-    "D:/UIT-VSFC/data/processed/test.csv"
+    "data/processed/train_augmented_2.csv", 
+    "data/processed/dev.csv", 
+    "data/processed/test.csv"
 ]
 
 for file_path in files:
