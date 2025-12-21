@@ -74,6 +74,26 @@ if __name__ == "__main__":
     test_loader = dm.test_dataloader()
     if len(test_loader) == 0:
         print("Lỗi đường dẫn")
+    print("\n🔥 DEBUG KIỂM TRA DỮ LIỆU THỰC TẾ 🔥")
+    # Lấy 1 batch đầu tiên ra soi
+    batch = next(iter(test_loader))
+    input_ids = batch['input_ids']
+    labels = batch['labels']
+
+    # 1. Kiểm tra Label
+    print(f"Labels (3 mẫu đầu): {labels[:3].cpu().numpy()}")
+
+    # 2. Quan trọng nhất: GIẢI MÃ LẠI TEXT XEM CÓ DẤU GẠCH NỐI KHÔNG?
+    # Dùng chính tokenizer của dm để decode
+    decoded_text = dm.tokenizer.decode(input_ids[0], skip_special_tokens=True)
+    print(f"👉 Text mẫu 1 model nhìn thấy: '{decoded_text}'")
+
+    if "_" in decoded_text:
+        print("✅ Text CÓ chứa dấu gạch nối (Data chuẩn Segmented).")
+    else:
+        print("❌ CẢNH BÁO: Text KHÔNG có dấu gạch nối! (Model đang đọc data thô)")
+        
+    print("------------------------------------------\n")
     # Load model
     checkpoint_path = "checkpoints/model.ckpt"
     print(f"Đang load model từ: {checkpoint_path}")
