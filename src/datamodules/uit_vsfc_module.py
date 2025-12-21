@@ -58,9 +58,9 @@ class UITVSFCDataModule(pl.LightningDataModule):
         Hàm này được gọi tự động bởi Trainer trên mỗi GPU (nếu train multi-gpu).
         """
         # Định nghĩa đường dẫn file
-        train_path = os.path.join(self.hparams.data_dir, "train_augmented_2.csv")
-        val_path = os.path.join(self.hparams.data_dir, "dev.csv") # UIT-VSFC thường dùng 'dev' cho validation
-        test_path = os.path.join(self.hparams.data_dir, "test.csv")
+        train_path = os.path.join(self.hparams.data_dir, "train_augmented_2_segmented.csv")
+        val_path = os.path.join(self.hparams.data_dir, "dev_segmented.csv") # UIT-VSFC thường dùng 'dev' cho validation
+        test_path = os.path.join(self.hparams.data_dir, "test_segmented.csv")
 
         # Setup cho giai đoạn Train/Validate
         if stage == "fit" or stage is None:
