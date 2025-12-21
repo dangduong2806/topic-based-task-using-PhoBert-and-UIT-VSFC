@@ -5,3 +5,4 @@ torchmetrics
 pandas
 rich
 keybert
+py-vncorenlp
