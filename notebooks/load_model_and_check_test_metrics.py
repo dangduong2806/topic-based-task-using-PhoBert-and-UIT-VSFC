@@ -48,7 +48,14 @@ def evaluate_and_report(model, data_loader, device):
     plt.xlabel('Dự đoán (Predicted)')
     plt.ylabel('Thực tế (Actual)')
     plt.title('Confusion Matrix')
-    plt.show()
+    
+    # THAY DÒNG plt.show() BẰNG DÒNG DƯỚI ĐÂY:
+    plt.savefig('confusion_matrix.png') 
+    print("✅ Đã lưu ảnh ma trận nhầm lẫn vào file: confusion_matrix.png")
+    
+    # Nếu muốn chắc ăn thì in luôn text ra
+    print("\n--- MA TRẬN NHẦM LẪN (DẠNG SỐ) ---")
+    print(cm)
 
 # --- CÁCH GỌI HÀM ---
 if __name__ == "__main__":
