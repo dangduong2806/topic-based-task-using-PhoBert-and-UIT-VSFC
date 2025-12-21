@@ -48,7 +48,7 @@ def evaluate_and_report(model, data_loader, device):
     plt.xlabel('Dự đoán (Predicted)')
     plt.ylabel('Thực tế (Actual)')
     plt.title('Confusion Matrix')
-    
+
     # THAY DÒNG plt.show() BẰNG DÒNG DƯỚI ĐÂY:
     plt.savefig('confusion_matrix.png') 
     print("✅ Đã lưu ảnh ma trận nhầm lẫn vào file: confusion_matrix.png")
@@ -72,6 +72,8 @@ if __name__ == "__main__":
     )
     dm.setup(stage="test")
     test_loader = dm.test_dataloader()
+    if len(test_loader) == 0:
+        print("Lỗi đường dẫn")
     # Load model
     checkpoint_path = "checkpoints/model.ckpt"
     print(f"Đang load model từ: {checkpoint_path}")
