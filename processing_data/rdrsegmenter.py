@@ -3,12 +3,22 @@ import py_vncorenlp
 import os
 from tqdm import tqdm # Thư viện hiện thanh tiến trình
 
+abs_path = '/content/VnCoreNLP'
 # 1. Setup RDRSegmenter
-if not os.path.exists('vncorenlp_models'):
-    os.makedirs('vncorenlp_models')
-    py_vncorenlp.download_model(save_dir='./vncorenlp_models')
+if not os.path.exists(abs_path):
+    os.makedirs(abs_path)
+    py_vncorenlp.download_model(save_dir=abs_path)
 
-rdrsegmenter = py_vncorenlp.VnCoreNLP(save_dir='./vncorenlp_models', annotators=["wseg"])
+# Kiểm tra xem file jar có tồn tại không cho chắc ăn
+jar_path = os.path.join(abs_path, 'VnCoreNLP-1.1.1.jar') # Hoặc phiên bản 1.2 tùy repo
+if not os.path.exists(jar_path):
+    # Repo mới thường để file jar tên là VnCoreNLP-1.1.1.jar hoặc tương tự
+    # Hãy list ra xem có file .jar nào
+    print("Các file trong thư mục:", os.listdir(abs_path))
+else:
+    print("✅ Đã tìm thấy file .jar")
+
+rdrsegmenter = py_vncorenlp.VnCoreNLP(save_dir=abs_path, annotators=["wseg"])
 
 def segment_text_robust(text):
     if not isinstance(text, str) or not text.strip():
