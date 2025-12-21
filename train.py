@@ -51,7 +51,7 @@ def train_model(cfg: DictConfig):
     early_stop_callback = EarlyStopping(
         monitor="val_f1",
         min_delta=0.0001,
-        patience=4,
+        patience=3,
         mode="max"
     )
 
