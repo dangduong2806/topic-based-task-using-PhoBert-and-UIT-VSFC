@@ -57,11 +57,11 @@ if __name__ == "__main__":
         cfg = yaml.safe_load(f)
 
     dm = UITVSFCDataModule(
-        data_dir=cfg.data.data_dir,
-        model_name=cfg.model.model_name,
-        batch_size=cfg.data.batch_size,
-        max_len=cfg.data.max_len,
-        num_workers=cfg.data.num_workers
+        data_dir=cfg['data']['data_dir'],
+        model_name=cfg['model']['model_name'],
+        batch_size=cfg['data']['batch_size'],
+        max_len=cfg['data']['max_len'],
+        num_workers=cfg['data']['num_workers']
     )
     dm.setup(stage="test")
     test_loader = dm.test_dataloader()
