@@ -91,7 +91,7 @@ def run_error_analysis():
 
         # Thống kê số lượng lỗi từng loại
         print("\n--- THỐNG KÊ LỖI (TOP MISTAKES) ---")
-        print(df_errors['Error_Type']).value_counts()
+        print(df_errors['Error_Type'].value_counts())
 
         # Lưu ra excel
         df_errors.to_excel(OUTPUT_FILE, index=False)
