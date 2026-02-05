@@ -69,7 +69,8 @@ def run_error_analysis():
             # Predict
             output = model(input_ids, attention_mask)
             # Output là logits, lấy argmax để dự đoán
-            pred_label_idx = torch.argmax(output, dim=1).item()
+            logits = output.logits
+            pred_label_idx = torch.argmax(logits, dim=1).item()
 
             # So sánh nếu sai thì lưu lại
             if pred_label_idx != true_label_idx:
