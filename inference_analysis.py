@@ -8,7 +8,7 @@ from src.models.phobert_module import PhoBERTClassifier
 from tqdm import tqdm
 
 # Cấu hình
-MODEL_PATH = ""
+MODEL_PATH = "/kaggle/input/checkpoint-main/model2.ckpt"
 TEST_DATA_PATH = "data/processed/test_segmented.csv"
 OUTPUT_FILE = "error_analysis_report.xlsx"
 
